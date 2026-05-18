@@ -1,0 +1,16 @@
+train:
+  lr: 0.001
+  num_epochs: 5
+  batch_size: 32
+
+finetune:
+  lr: 0.0001
+  num_epochs: 2
+  batch_size: 32
+  s3_endpoint: http://localhost:9000
+  s3_bucket: models
+  s3_key_v1: resnet18_v1.pth
+  s3_key_v2: resnet18_v2.pth
+
+evaluate:
+  batch_size: 32

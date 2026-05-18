@@ -1,0 +1,52 @@
+schema: '2.0'
+stages:
+  finetune:
+    cmd: python scripts/finetune.py
+    deps:
+    - path: ai-vs-human-generated-dataset-hw/Train_2
+      hash: md5
+      md5: cd8edb58d893e35241fdf8fbf6049229.dir
+      size: 229344118
+      nfiles: 3998
+    - path: scripts/finetune.py
+      hash: md5
+      md5: 2a0d3f9cc05ae16c44b6e93a65bdfe2e
+      size: 5827
+    params:
+      params.yaml:
+        finetune.batch_size: 32
+        finetune.lr: 0.0001
+        finetune.num_epochs: 2
+    outs:
+    - path: metrics/finetune_metrics.json
+      hash: md5
+      md5: 5f7382c35a6d0020c13d50b4100f35b9
+      size: 99
+    - path: models/model_v2.pth
+      hash: md5
+      md5: a005eabb001027b2b61ea8991978856d
+      size: 44787787
+  evaluate:
+    cmd: python scripts/evaluate.py
+    deps:
+    - path: ai-vs-human-generated-dataset-hw/Test_2
+      hash: md5
+      md5: be5492c21e2dec84056e1599a807ccd1.dir
+      size: 114391042
+      nfiles: 2001
+    - path: models/model_v2.pth
+      hash: md5
+      md5: a005eabb001027b2b61ea8991978856d
+      size: 44787787
+    - path: scripts/evaluate.py
+      hash: md5
+      md5: 117e6d4a7790e457d57eec4577927f2d
+      size: 3208
+    params:
+      params.yaml:
+        evaluate.batch_size: 32
+    outs:
+    - path: metrics/test_metrics.json
+      hash: md5
+      md5: 358a9a6e4417741235c91669fd327fc5
+      size: 141

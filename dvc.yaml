@@ -1,0 +1,28 @@
+stages:
+
+  finetune:
+    cmd: python scripts/finetune.py
+    deps:
+      - scripts/finetune.py
+      - ai-vs-human-generated-dataset-hw/Train_2
+    params:
+      - finetune.lr
+      - finetune.num_epochs
+      - finetune.batch_size
+    outs:
+      - models/model_v2.pth
+    metrics:
+      - metrics/finetune_metrics.json:
+          cache: false
+
+  evaluate:
+    cmd: python scripts/evaluate.py
+    deps:
+      - scripts/evaluate.py
+      - models/model_v2.pth
+      - ai-vs-human-generated-dataset-hw/Test_2
+    params:
+      - evaluate.batch_size
+    metrics:
+      - metrics/test_metrics.json:
+          cache: false
