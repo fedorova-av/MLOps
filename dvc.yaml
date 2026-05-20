@@ -5,6 +5,7 @@ stages:
     deps:
       - scripts/finetune.py
       - ai-vs-human-generated-dataset-hw/Train_2
+      - models/model_v1.pth
     params:
       - finetune.lr
       - finetune.num_epochs

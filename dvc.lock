@@ -8,10 +8,14 @@ stages:
       md5: cd8edb58d893e35241fdf8fbf6049229.dir
       size: 229344118
       nfiles: 3998
+    - path: models/model_v1.pth
+      hash: md5
+      md5: ae59446454f3920c3b3ffd68e8cd49cf
+      size: 44787787
     - path: scripts/finetune.py
       hash: md5
-      md5: 2a0d3f9cc05ae16c44b6e93a65bdfe2e
-      size: 5827
+      md5: dfba03e8954cd30e5ab6ad872ba79d66
+      size: 4105
     params:
       params.yaml:
         finetune.batch_size: 32
@@ -20,11 +24,11 @@ stages:
     outs:
     - path: metrics/finetune_metrics.json
       hash: md5
-      md5: 5f7382c35a6d0020c13d50b4100f35b9
-      size: 99
+      md5: 87f5938ace350aa0be41099048474319
+      size: 98
     - path: models/model_v2.pth
       hash: md5
-      md5: a005eabb001027b2b61ea8991978856d
+      md5: 28c9a3a5dbf676763bc54569b7871bdf
       size: 44787787
   evaluate:
     cmd: python scripts/evaluate.py
@@ -36,17 +40,17 @@ stages:
       nfiles: 2001
     - path: models/model_v2.pth
       hash: md5
-      md5: a005eabb001027b2b61ea8991978856d
+      md5: 28c9a3a5dbf676763bc54569b7871bdf
       size: 44787787
     - path: scripts/evaluate.py
       hash: md5
-      md5: 117e6d4a7790e457d57eec4577927f2d
-      size: 3208
+      md5: 42d60dedfd83eedc3705259f2c4cbff2
+      size: 3181
     params:
       params.yaml:
         evaluate.batch_size: 32
     outs:
     - path: metrics/test_metrics.json
       hash: md5
-      md5: 358a9a6e4417741235c91669fd327fc5
-      size: 141
+      md5: 8e332c8cc161bf84374299f98dbcefb2
+      size: 136
